@@ -12,5 +12,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Frotas.Infra\Frotas.Infra.csproj" />
+  </ItemGroup>
+
 
 </Project>

@@ -1,3 +1,4 @@
+using Frotas.Infra.Singleton;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -39,6 +40,7 @@ namespace ExemploFrotas
                 var apiPath = Path.Combine(AppContext.BaseDirectory, "ExemploFrotas.xml");
                 c.IncludeXmlComments(apiPath);
             });
+            services.AddSingleton<SingletonContainer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
