@@ -13,8 +13,9 @@ namespace ExemploFrotas.Controllers
     public class VeiculosController : ControllerBase
     {
         private readonly IVeiculoRepository _veiculoRepository;
+        private readonly IVeiculoDetran veiculoDetran;
 
-        public VeiculosController(IVeiculoRepository veiculoRepository)
+        public VeiculosController(IVeiculoRepository veiculoRepository, IVeiculoDetran veiculoDetran)
         {
             this._veiculoRepository = veiculoRepository;
         }
@@ -56,6 +57,13 @@ namespace ExemploFrotas.Controllers
 
             _veiculoRepository.Delete(veiculo);
 
+            return NoContent();
+        }
+
+        [HttpPut("{id}/vistoria")]
+        public IActionResult Put(Guid id)
+        {
+            veiculoDetran.AgendarVistoriaDetran(id);
             return NoContent();
         }
     }

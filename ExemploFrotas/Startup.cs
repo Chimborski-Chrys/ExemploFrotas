@@ -1,4 +1,5 @@
 using Frotas.Domain;
+using Frotas.Infra.Facade;
 using Frotas.Infra.Repository;
 using Frotas.Infra.Repository.EF;
 using Frotas.Infra.Singleton;
@@ -50,6 +51,13 @@ namespace ExemploFrotas
             services.AddTransient<IVeiculoRepository, InMemoryRepository>();
 
             services.AddDbContext<FrotaContext>(opt => opt.UseInMemoryDatabase("Frota"));
+
+            services.AddTransient<IVeiculoDetran, VeiculoDetranFacade>();
+
+            services.Configure<DetranOptions>(Configuration.GetSection("DetranOptions"));
+
+            services.AddHttpClient();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
