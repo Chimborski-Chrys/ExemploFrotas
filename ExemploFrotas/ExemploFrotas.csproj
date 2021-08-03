@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Frotas.Domain\Frotas.Domain.csproj" />
     <ProjectReference Include="..\Frotas.Infra\Frotas.Infra.csproj" />
   </ItemGroup>
 

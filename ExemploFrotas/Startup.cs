@@ -1,3 +1,5 @@
+using Frotas.Domain;
+using Frotas.Infra.Repository;
 using Frotas.Infra.Singleton;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,6 +43,8 @@ namespace ExemploFrotas
                 c.IncludeXmlComments(apiPath);
             });
             services.AddSingleton<SingletonContainer>();
+
+            services.AddSingleton<IVeiculoRepository, InMemoryRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
