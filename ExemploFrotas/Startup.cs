@@ -1,10 +1,12 @@
 using Frotas.Domain;
 using Frotas.Infra.Repository;
+using Frotas.Infra.Repository.EF;
 using Frotas.Infra.Singleton;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -44,7 +46,10 @@ namespace ExemploFrotas
             });
             services.AddSingleton<SingletonContainer>();
 
-            services.AddSingleton<IVeiculoRepository, InMemoryRepository>();
+            //    services.AddSingleton<IVeiculoRepository, InMemoryRepository>();
+            services.AddTransient<IVeiculoRepository, InMemoryRepository>();
+
+            services.AddDbContext<FrotaContext>(opt => opt.UseInMemoryDatabase("Frota"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
